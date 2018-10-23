@@ -60,6 +60,33 @@ def plotSpectrogram(data, timeOffset, specFileName):
 #########################################################################
 
 # 3DES regions
+
+data = getData("./data/3DES/3des-6.cfile")
+plotSpectrogram(data, 0.53, '3des.36')
+plotSpectrogram(data, 2.25, '3des.37')
+plotSpectrogram(data, 3.97, '3des.38')
+plotSpectrogram(data, 5.68, '3des.39')
+plotSpectrogram(data, 7.419, '3des.40')
+plotSpectrogram(data, 9.109, '3des.41')
+plotSpectrogram(data, 10.809, '3des.42')
+plotSpectrogram(data, 12.52, '3des.43')
+plotSpectrogram(data, 14.247, '3des.44')
+
+data = getData("./data/3DES/3des-7.cfile")
+plotSpectrogram(data, 0.45, '3des.45')
+plotSpectrogram(data, 2.20, '3des.46')
+plotSpectrogram(data, 3.93, '3des.47')
+plotSpectrogram(data, 5.59, '3des.48')
+plotSpectrogram(data, 7.32, '3des.49')
+plotSpectrogram(data, 9.04, '3des.50')
+plotSpectrogram(data, 10.75, '3des.51')
+plotSpectrogram(data, 12.50, '3des.52')
+plotSpectrogram(data, 14.20, '3des.53')
+
+
+
+'''
+# 3DES regions
 data = getData("./data/with-xor.cfile")
 plotSpectrogram(data, 0.27, 'xor.1')
 plotSpectrogram(data, 0.27, 'xor.2')
@@ -149,7 +176,6 @@ plotSpectrogram(data, 0.27, 'xor.78')
 plotSpectrogram(data, 0.27, 'xor.79')
 plotSpectrogram(data, 0.27, 'xor.80')
 
-'''
 # 3DES regions
 data = getData("./data/with-3des.cfile")
 plotSpectrogram(data, 3.26, '3des.1')
