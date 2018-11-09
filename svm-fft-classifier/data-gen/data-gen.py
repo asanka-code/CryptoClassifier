@@ -1,38 +1,65 @@
 import seciqlib
 import numpy as np
 
-window = 0.08
+window = 0.08 # Caution: feature vector lenth depends on this window size
+windowStep = 0.3
 
-# Saving FFT vectors to *.npy files
-# =================================
-
+###############################################################################
 # 3DES
+traceCounter = 0
+traceName = "./input-traces/3DES/3des"
+
 data = seciqlib.getData("./iq-data/3DES/3des-6.cfile")
-fftdata = seciqlib.getNormalizedFFTVector(data, 0.53, window)
-# save an FFT vector to a *.npy file and load it back
-print("fftdata=", fftdata)
-print("len(fftdata)=", len(fftdata))
-print("max(fftdata)=", max(fftdata))
-np.save("3des.1", fftdata)
+duration = seciqlib.getTimeDuration(data)
+offset = 0
+while (offset+window)<=duration:
+    fftdata = seciqlib.getNormalizedFFTVector(data, offset, window)    
+    np.save(traceName+"."+str(traceCounter), fftdata)    
+    print("len(fftdata)=", len(fftdata))
+    print("offset=", offset)
+    offset = offset + windowStep
+    traceCounter = traceCounter + 1
+    
 
-'''
-print("\n Loading...\n")
-fftloaded = np.load("1.npy")
-print("fftloaded=", fftloaded)
-print("len(fftloaded)=", len(fftloaded))
-print("max(fftloaded)=", max(fftloaded))
-print("\n Converting to Python list...\n")
-fftTrace = fftloaded.tolist()
-print("type(fftTrace)=", type(fftTrace))
-print("len(fftTrace)=", len(fftTrace))
-print("max(fftTrace)=", max(fftTrace))
-'''
+data = seciqlib.getData("./iq-data/3DES/3des-6.cfile")
+duration = seciqlib.getTimeDuration(data)
+offset = 0
+while (offset+window)<=duration:
+    fftdata = seciqlib.getNormalizedFFTVector(data, offset, window)    
+    np.save(traceName+"."+str(traceCounter), fftdata)    
+    print("len(fftdata)=", len(fftdata))
+    print("offset=", offset)
+    offset = offset + windowStep
+    traceCounter = traceCounter + 1
 
+
+
+###############################################################################
 # AES
+traceCounter = 0
+traceName = "./input-traces/AES/aes"
+
 data = seciqlib.getData("./iq-data/AES/aes-2.cfile")
-fftdata = seciqlib.getNormalizedFFTVector(data, 7.40, window)
-# save an FFT vector to a *.npy file and load it back
-print("fftdata=", fftdata)
-print("len(fftdata)=", len(fftdata))
-print("max(fftdata)=", max(fftdata))
-np.save("aes.1", fftdata)
+duration = seciqlib.getTimeDuration(data)
+offset = 0
+while (offset+window)<=duration:
+    fftdata = seciqlib.getNormalizedFFTVector(data, offset, window)    
+    np.save(traceName+"."+str(traceCounter), fftdata)    
+    print("len(fftdata)=", len(fftdata))
+    print("offset=", offset)
+    offset = offset + windowStep
+    traceCounter = traceCounter + 1
+    
+
+data = seciqlib.getData("./iq-data/AES/aes-2.cfile")
+duration = seciqlib.getTimeDuration(data)
+offset = 0
+while (offset+window)<=duration:
+    fftdata = seciqlib.getNormalizedFFTVector(data, offset, window)    
+    np.save(traceName+"."+str(traceCounter), fftdata)    
+    print("len(fftdata)=", len(fftdata))
+    print("offset=", offset)
+    offset = offset + windowStep
+    traceCounter = traceCounter + 1
+
+
