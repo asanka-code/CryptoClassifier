@@ -1,0 +1,7 @@
+file_name,cryto_algorithm
+./iq-data/3DES/3des-6.cfile,3des
+./iq-data/3DES/3des-6.cfile,3des
+./iq-data/AES/aes-2.cfile,aes
+./iq-data/AES/aes-2.cfile,aes
+./iq-data/3DES/3des-6.cfile,3des
+./iq-data/AES/aes-2.cfile,aes
