@@ -3,7 +3,7 @@ import numpy as np
 import csv
 
 configFileName = "config.txt"
-pathToNpyFiles = "./input-traces"
+pathToNpyFiles = "../input-traces"
 defaultStartingSequence = 0
 
 window = 0.08 # Caution: feature vector lenth depends on this window size

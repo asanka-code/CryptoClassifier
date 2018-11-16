@@ -1,9 +1,12 @@
 from sklearn import svm
 import numpy as np
 import os
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
 
-trainingTraces = "./input-traces"
-testTraces = "./test-traces"
+trainingTraces = "../input-traces"
+testTraces = "../test-traces"
 
 
 ###############################################################################
@@ -37,8 +40,8 @@ def loadDataToXY():
         X.extend([fftTrace])
         Y.append(cryptoDict[cryptoName])
             
-        #if len(X)==50:
-        #    break
+        if len(X)==200:
+            break
 
     print("cryptoDict=", cryptoDict)
     #print("type(X)=", type(X))
@@ -91,10 +94,15 @@ X, Y = loadDataToXY()
 
 print("Training classifier...")
 # classifier
-clf = svm.SVC(gamma='scale', decision_function_shape='ovr')
+#clf = svm.SVC(gamma='scale', decision_function_shape='ovr')
+clf = svm.SVC(gamma='scale', kernel='rbf', decision_function_shape='ovr')
 
+'''
 # training
 clf.fit(X, Y) 
+X = None
+Y = None
+
 
 print("Testing...")
 # testing
@@ -104,10 +112,10 @@ for i in range(0,len(Xtest)):
     print("Ytest[i]=", Ytest[i])
     dec = clf.decision_function([Xtest[i]])
     print("decision vector=", dec)
+'''
 
-
-#testTrace = loadTestData()
-#dec = clf.decision_function([testTrace])
-#print("decision vector=", dec)
-
-
+X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)
+clf.fit(X_train, y_train)
+y_pred = clf.predict (X_test)
+print(confusion_matrix(y_test, y_pred))
+print(classification_report(y_test, y_pred))
